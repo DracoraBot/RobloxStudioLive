@@ -1,0 +1,24 @@
+# Normalise line endings on commit, so a Windows clone and a Linux/macOS clone
+# produce identical bytes for the same revision.  The daemon hashes content
+# both ways round, so a line-ending difference that leaked into the repository
+# would show up as a phantom edit on the next poll.
+* text=auto eol=lf
+
+# Windows batch files must keep CRLF: cmd.exe can mis-parse labels and
+# multi-line blocks in an LF-only .cmd file.
+*.cmd text eol=crlf
+*.bat text eol=crlf
+
+# Mirror of a Roblox place.  Ignored by .gitignore, but pinned here too so that
+# any deliberately committed script stays LF - Roblox stores LF.
+*.luau text eol=lf
+
+# Binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.zip binary
+*.exe binary
+*.dll binary

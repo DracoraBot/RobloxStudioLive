@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "project": "RobloxStudioLive",
+  "roots": [
+    "ServerScriptService",
+    "ReplicatedStorage",
+    "StarterGui",
+    "StarterPlayer",
+    "ReplicatedFirst",
+    "ServerStorage",
+    "Workspace"
+  ],
+  "sync": {
+    "pollIntervalSeconds": 2.0,
+    "settleSeconds": 1.5,
+    "autoPull": true,
+    "autoPush": true,
+    "propagateRenames": true,
+    "ignoreLocalGlobs": [
+      "*.conflict-*.luau",
+      "*.bak",
+      "*.tmp",
+      "~$*"
+    ]
+  },
+  "logging": {
+    "level": "INFO"
+  },
+  "mcp": {
+    "exePath": null,
+    "datamodel": "Edit",
+    "requestTimeoutSeconds": 120
+  }
+}

@@ -1,0 +1,98 @@
+# ============================================================================
+#  RobloxStudioLive - what must never be published
+# ============================================================================
+#
+#  Everything hidden here is one of three things:
+#
+#    (a) your own game - the scripts this tool mirrors out of your place,
+#    (b) machine-local state - absolute paths, your Windows username, your
+#        placeId, the hash baseline for your place, and
+#    (c) credentials, defensively - nothing in this project needs one today.
+#
+#  None of it is required to *use* the tool.  A fresh clone gets everything it
+#  needs from `init.cmd`, which recreates every runtime file listed below.
+#
+#  Rule of thumb: if a file only exists on your machine, add it here first and
+#  then check that it stays out with
+#
+#      git status --short
+#
+# ----------------------------------------------------------------------------
+
+# --- Your game, mirrored out of Studio --------------------------------------
+# The daemon writes your place's scripts here.  Committing this folder would
+# publish your game.  It still exists locally; it is simply never tracked.
+src/
+
+# --- Machine-local state ----------------------------------------------------
+# sync-state.json        the 3-way diff baseline: every script path in your
+#                        place, plus content hashes and the placeId
+# config/settings.json   your roots, intervals and placeId
+# config/structure.json  a dump of your place's instance tree (`rss tree`)
+# config/python-path.txt the interpreter init.cmd validated on this machine
+# .rss-daemon.lock       pid of the running daemon
+sync-state.json
+.rss-daemon.lock
+config/settings.json
+config/structure.json
+config/python-path.txt
+config/*.bak
+
+# --- Logs -------------------------------------------------------------------
+# Every line carries an absolute path, and therefore your username.
+logs/
+
+# --- Backups ----------------------------------------------------------------
+# Full copies of both sides of your place, taken before sync was enabled.
+backups/
+
+# --- Python -----------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+ENV/
+*.egg-info/
+
+# --- Credentials and secrets ------------------------------------------------
+# This project holds no tokens: it drives Roblox Studio through Studio's own
+# MCP binary over stdio, and Roblox does not ask it for an API key.  These
+# patterns are here so that a stray key can never be committed by accident.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+secrets.json
+secrets.toml
+.rss-secrets.json
+
+# --- Editors and OS ---------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+desktop.ini
+.DS_Store
+
+# --- Scratch and transient --------------------------------------------------
+# Conflict copies are parked beside your script by design; `.rss-tmp` is the
+# atomic-write staging name and must never survive a commit either.
+*.conflict-*.luau
+*.rss-tmp
+*.bak
+*.tmp
+*.orig
+*.rej
